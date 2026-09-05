@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../api/tmdb';
+import HeroBanner from '../components/HeroBanner';
+import MovieRow from '../components/MovieRow';
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +13,6 @@ function Home() {
       try {
         const data = await getTrending();
         setMovies(data);
-        console.log('Trending movies:', data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -24,7 +25,12 @@ function Home() {
   if (isLoading) return <p>Loading movies...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  return <div>Check your console for movie data!</div>;
+  return (
+    <div>
+      <HeroBanner movie={movies[0]} />
+      <MovieRow title="Trending Now" movies={movies} />
+    </div>
+  );
 }
 
 export default Home;
