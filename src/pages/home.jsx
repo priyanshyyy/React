@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { getTrending } from '../api/tmdb';
 import HeroBanner from '../components/HeroBanner';
 import MovieRow from '../components/MovieRow';
+import MovieModal from '../components/MovieModal';
 
 function Home() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     async function fetchMovies() {
@@ -28,7 +30,18 @@ function Home() {
   return (
     <div>
       <HeroBanner movie={movies[0]} />
-      <MovieRow title="Trending Now" movies={movies} />
+      <MovieRow
+        title="Trending Now"
+        movies={movies}
+        onMovieClick={setSelectedMovie}
+      />
+
+      {selectedMovie && (
+        <MovieModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </div>
   );
 }
