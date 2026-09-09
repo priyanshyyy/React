@@ -35,7 +35,7 @@ function Search() {
           onMovieClick={setSelectedMovie}
         />
       ) : (
-        debouncedQuery && <p style={{ padding: '20px' }}>No results found.</p>
+        debouncedQuery && <p className="empty-state">No results found.</p>
       )}
 
       {selectedMovie && (

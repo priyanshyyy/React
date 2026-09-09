@@ -24,8 +24,17 @@ function Home() {
     fetchMovies();
   }, []);
 
-  if (isLoading) return <p>Loading movies...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (isLoading) {
+    return (
+      <div className="skeleton-row">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="skeleton-card"></div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) return <p className="empty-state">Error: {error}</p>;
 
   return (
     <div>

@@ -218,3 +218,86 @@ body {
 .watchlist-btn:hover {
   opacity: 0.85;
 }
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 45vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-overlay p {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .movie-card img {
+    width: 110px;
+  }
+
+  .navbar-links {
+    gap: 12px;
+  }
+}
+
+/* Phone */
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 1.1rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.85rem;
+  }
+
+  .hero-banner {
+    height: 40vh;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.4rem;
+  }
+
+  .movie-card img {
+    width: 90px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+  }
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+}
+
+.skeleton-card {
+  width: 150px;
+  height: 225px;
+  background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 1.1rem;
+}

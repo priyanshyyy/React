@@ -14,7 +14,7 @@ function MyList() {
       {list.length > 0 ? (
         <MovieRow title="" movies={list} onMovieClick={setSelectedMovie} />
       ) : (
-        <p style={{ padding: '0 20px' }}>Your list is empty. Add movies from Home or Search!</p>
+        <p className="empty-state">Your list is empty. Add movies from Home or Search!</p>
       )}
 
       {selectedMovie && (
