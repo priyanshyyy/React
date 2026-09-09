@@ -202,3 +202,19 @@ body {
 .navbar-search {
   cursor: pointer;
 }
+
+
+.watchlist-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.watchlist-btn:hover {
+  opacity: 0.85;
+}
