@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>StreamFlix — a learning project by [your name]</p>
+      <p>StreamFlix — a learning project by Priyanshi Srivastava</p>
     </footer>
   );
 }

@@ -26,3 +26,11 @@ export async function searchMovies(query) {
   const data = await res.json();
   return data.results;
 }
+
+export async function getMoviesByGenre(genreId) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${KEY}&with_genres=${genreId}`
+  );
+  const data = await res.json();
+  return data.results;
+}

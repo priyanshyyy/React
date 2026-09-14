@@ -1,6 +1,10 @@
 :root {
-  --primary-color: #e50914;
-  --background-color: #141414;
-  --text-color: #ffffff;
-  --secondary-color: #b3b3b3;
+  --bg-color: #0d0f14;
+  --surface-color: #171a21;
+  --text-color: #f5f1e8;
+  --text-muted: #a8a29a;
+  --accent: #d4af6a;
+  --accent-hover: #e8c785;
+  --spacing: 16px;
+  --radius: 10px;
 }

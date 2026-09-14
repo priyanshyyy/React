@@ -1,27 +1,42 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from '../api/tmdb';
+import { getTrending, getMoviesByGenre } from '../api/tmdb';
 import HeroBanner from '../components/HeroBanner';
 import MovieRow from '../components/MovieRow';
 import MovieModal from '../components/MovieModal';
 
+const GENRES = [
+  { id: 28, name: 'Action' },
+  { id: 35, name: 'Comedy' },
+  { id: 27, name: 'Horror' },
+  { id: 10749, name: 'Romance' },
+  { id: 16, name: 'Animation' },
+];
+
 function Home() {
-  const [movies, setMovies] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [genreMovies, setGenreMovies] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    async function fetchMovies() {
+    async function fetchAll() {
       try {
-        const data = await getTrending();
-        setMovies(data);
+        const trendingData = await getTrending();
+        setTrending(trendingData);
+
+        const genreResults = {};
+        for (const genre of GENRES) {
+          genreResults[genre.name] = await getMoviesByGenre(genre.id);
+        }
+        setGenreMovies(genreResults);
       } catch (err) {
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     }
-    fetchMovies();
+    fetchAll();
   }, []);
 
   if (isLoading) {
@@ -38,12 +53,22 @@ function Home() {
 
   return (
     <div>
-      <HeroBanner movie={movies[0]} />
+      <HeroBanner movie={trending[0]} />
+
       <MovieRow
         title="Trending Now"
-        movies={movies}
+        movies={trending}
         onMovieClick={setSelectedMovie}
       />
+
+      {GENRES.map((genre) => (
+        <MovieRow
+          key={genre.id}
+          title={genre.name}
+          movies={genreMovies[genre.name] || []}
+          onMovieClick={setSelectedMovie}
+        />
+      ))}
 
       {selectedMovie && (
         <MovieModal
