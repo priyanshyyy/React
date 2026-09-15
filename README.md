@@ -2,7 +2,7 @@
 
 A Netflix-inspired movie browser built with React — created as a learning project to practice modern frontend development, authentication, and cloud data storage.
 
-**[Live Demo](#)** — *(add your Vercel link here once deployed)*
+**[Live Demo](https://react-q6cjswk1j-priyanshi-feb0.vercel.app)**
 
 ## Features
 
